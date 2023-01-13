@@ -57,7 +57,7 @@
                 <div class="row">
                     <div class="col-md-7">
                         <p><b>I am Bienvenido "Bien" Oropeza III</b></p>
-                        <p class="pt-2 fs-6 text-justify">I am a Real Estate Consultant based in Makati City. I have been providing real estate services since year 2019 with HLURB Registration No. BRFO-A-07/19-474.</p>
+                        <p class="pt-2 fs-6 text-justify">I am a Real Estate Consultant based in Makati, Philippines. I have been providing real estate services since year 2019 with HLURB Registration No. BRFO-A-07/19-474.</p>
                         
                         <h4 class=" fs-5 my-3 mt-4 fw-bolder">Real Estate Services</h4>
                         <p>We provide the following services:</p>

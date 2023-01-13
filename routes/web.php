@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,7 @@ require __DIR__.'/auth.php';
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+Route::resource('listings', ListingController::class);
+
 });
