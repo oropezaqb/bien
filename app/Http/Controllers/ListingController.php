@@ -129,7 +129,9 @@ class ListingController extends Controller
      */
     public function edit(Listing $listing)
     {
-        //
+        $header = "Edit Listing";
+        return view('listings.edit',
+            compact('listing', 'header'));
     }
 
     /**
@@ -141,7 +143,7 @@ class ListingController extends Controller
      */
     public function update(Request $request, Listing $listing)
     {
-        //
+dd($request);
     }
 
     /**
