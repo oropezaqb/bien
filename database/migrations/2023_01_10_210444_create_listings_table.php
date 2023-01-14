@@ -30,12 +30,12 @@ return new class extends Migration
             $table->string('address_floor')->nullable();
             $table->string('address_unit')->nullable();
             $table->date('available_at');
-            $table->string('owner_fname');
-            $table->string('owner_lname');
+            $table->string('owner_name');
             $table->string('phone_number');
             $table->string('phone_number2')->nullable();
             $table->string('email')->nullable();
             $table->text('address')->nullable();
+            $table->string('photos');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')

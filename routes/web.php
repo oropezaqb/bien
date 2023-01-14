@@ -31,10 +31,9 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::resource('listings', ListingController::class);
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
-
-Route::resource('listings', ListingController::class);
 
 });

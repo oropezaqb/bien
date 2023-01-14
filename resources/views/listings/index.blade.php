@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __($header) }}
@@ -10,12 +11,6 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
-                    <?php $browse = \DB::table('users')->leftJoin('roles', 'users.role_id', '=', 'roles.id')
-                        ->leftJoin('permission_role', 'roles.id', '=', 'permission_role.role_id')
-                        ->leftJoin('permissions', 'permission_role.permission_id', '=', 'permissions.id')
-                        ->where('users.id', auth()->user()->id)
-                        ->where('permissions.key', 'browse_listings')->exists(); ?>
-                    @if ($browse)
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
@@ -35,22 +30,21 @@
                                         @method('DELETE')
                                         <button class="btn btn-link" type="submit" onclick="return confirm('Are you sure you want to delete this listing?');">Delete</button>
                                     </form></div>
-                                    <div style="display:inline-block;">&nbsp;&nbsp;Property {{ $listing->id }}
-                                        , {{ \App\Models\Bill::where('id', $bill->id)->firstOrFail()->payee->name }}
-                                        , Bill no. {{ $bill->bill_number }}
-                                        , {{ $bill->period_start }}
-                                        , {{ $bill->period_end }}
-                                        , {{ $bill->particulars }}
+                                    <div style="display:inline-block;">&nbsp;&nbsp;Property {{ $listing->property_type }}
+                                        , {{ $listing->property_description }}
+                                        , {{ $listing->floor_area }}
+                                        , {{ $listing->contract }}
+                                        , {{ $listing->price }}
+                                        , {{ $listing->address_barangay }}
+                                        , {{ $listing->address_city }}
                                     </div>
                                 </div>
                             </div>
                         @empty
-                            <p>No bills recorded yet.</p>
+                            <p>No listings recorded yet.</p>
                         @endforelse
-                        {{ $bills->links() }}
-                    @else
-                        You are not authorized to browse bills.
-                    @endif
+                        {{ $listings->links() }}
+
                 </div>
             </div>
         </div>
