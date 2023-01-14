@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreListing;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class ListingController extends Controller
 {
@@ -152,9 +153,17 @@ class ListingController extends Controller
     public function destroy(Listing $listing)
     {
             try {
+                $pictures = json_decode($listing->photos);
                 \DB::transaction(function () use ($listing) {
                     $listing->delete();
                 });
+                $arrlength = count($pictures);
+                for($x = 0; $x < $arrlength; $x++) {
+//                    Storage::delete(asset('/images/'. $pictures[$x]));
+                    if(\File::exists(public_path('images/'. $pictures[$x]))){
+                        \File::delete(public_path('images/'. $pictures[$x]));
+                    }
+                }
                 return redirect(route('listings.index'));
             } catch (\Exception $e) {
                 return back()->with('status', $this->translateError($e))->withInput();
