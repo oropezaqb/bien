@@ -57,27 +57,49 @@ class ListingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreListing $request)
     {
-        $this->validate($request, [
-                'filename' => 'required',
-                'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
-        ]);
-
-        if($request->hasfile('filename'))
+        if($request->hasfile('photos'))
         {
-            foreach($request->file('filename') as $image)
+            foreach($request->file('photos') as $image)
             {
                 $name=$image->getClientOriginalName();
-                $image->move(public_path().'/image/', $name);  // your folder path
+                $image->move(public_path().'assets/images/listings', $name);  // your folder path
                 $data[] = $name;
             }
         }
-        
-        $Upload_model = new FormMultipleUpload;
-        $Upload_model->filename = json_encode($data);
-        $Upload_model->save();
-        return back()->with('success', 'Your images has been upload successfully');
+        try {
+            \DB::transaction(function () use ($request) {
+                $listing = new Bill([
+                    'received_at' => request('received_at'),
+                    'payee_id' => request('payee_id'),
+                    'amount' => request('amount'),
+                    'bill_number' => request('bill_number'),
+                    'billed_at' => request('billed_at'),
+                    'po_number' => request('po_number'),
+                    'period_start' => request('period_start'),
+                    'period_end' => request('period_end'),
+                    'petty' => request('petty'),
+                    'classification' => request('classification'),
+                    'due_at' => request('due_at'),
+                    'endorsed_at' => request('endorsed_at'),
+                    'particulars' => request('particulars'),
+                    'remarks' => request('remarks'),
+                    'photos' => json_encode($data),
+                    'user_id' => request('user_id'),
+
+                ]);
+                $listing->save();
+            });
+            return redirect(route('bills.index'))->with('success', 'Your listing has been recorded successfully');;
+        } catch (\Exception $e) {
+            return back()->with('status', $this->translateError($e))->withInput();
+        }
+
+        $this->validate($request, [
+                'photos' => 'required',
+                'photos.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+        ]);
     }
 
     /**

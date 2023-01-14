@@ -204,8 +204,8 @@
                                 <textarea class="form-control" rows="3" id="address" name="address">{{ old('address') }}</textarea>
                             </div>
                             <div class="form-group">
-                                <label for="images">Upload photos&nbsp;</label>
-                                <input required type="file" class="form-control" name="images[]" multiple>
+                                <label for="photos">Upload photos&nbsp;</label>
+                                <input required type="file" class="form-control" name="photos[]" multiple>
                             </div>
                             <input type="hidden" id="user_id" name="user_id" value="{{ auth()->user()->id }}">
                             <button class="btn btn-outline-primary" type="submit">Save</button>
