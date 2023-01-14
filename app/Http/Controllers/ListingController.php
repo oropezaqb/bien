@@ -27,7 +27,8 @@ class ListingController extends Controller
     {
         if (empty(request('development')))
         {
-            $listings = \DB::table('listings')->latest()->paginate(25);
+            $listings = \DB::table('listings')->where('user_id', auth()->user()->id)->latest()->paginate(25);
+            $forApprovals = \DB::table('listings')->where('publish', '0')->latest()->paginate(25);
         }
         else
         {
@@ -40,7 +41,7 @@ class ListingController extends Controller
         {
             \Request::flash();
         }
-        return view('listings.index', compact('listings', 'header'));
+        return view('listings.index', compact('listings', 'header', 'forApprovals'));
     }
 
     /**
@@ -188,6 +189,30 @@ class ListingController extends Controller
                 }
             });
             return redirect(route('listings.show', [$listing]))->with('status', 'Listing updated!');
+        } catch (\Exception $e) {
+            return back()->with('status', $this->translateError($e))->withInput();
+        }
+    }
+
+    public function publish(Request $request)
+    {
+        try {
+            \DB::transaction(function () use ($request) {
+                \DB::table('listings')->where('id', $request->listing_id)->update(['publish' => '1']);
+            });
+            return redirect(route('listings.index'))->with('status', 'Listing published!');
+        } catch (\Exception $e) {
+            return back()->with('status', $this->translateError($e))->withInput();
+        }
+    }
+
+    public function unpublish(Request $request)
+    {
+        try {
+            \DB::transaction(function () use ($request) {
+                \DB::table('listings')->where('id', $request->listing_id)->update(['publish' => '0']);
+            });
+            return redirect(route('listings.index'))->with('status', 'Listing unpublished!');
         } catch (\Exception $e) {
             return back()->with('status', $this->translateError($e))->withInput();
         }

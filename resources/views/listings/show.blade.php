@@ -225,6 +225,13 @@
                                     type="text"
                                     value="{{ $listing->user->name }}" disabled>
                             </div>
+                            <div class="form-group custom-control-inline">
+                                <label>Published?&nbsp;</label>
+                                <input
+                                    class="form-control"
+                                    type="text"
+                                    value="{{ $listing->publish }}" disabled>
+                            </div>
                         </form>
                         <br>
                         <div style="clear: both;">
@@ -238,6 +245,28 @@
                                     <button class="btn btn-outline-danger" type="submit" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
                                 </form>
                             </div>
+
+                    <?php $browse = \DB::table('users')->leftJoin('roles', 'users.role_id', '=', 'roles.id')
+                        ->leftJoin('permission_role', 'roles.id', '=', 'permission_role.role_id')
+                        ->leftJoin('permissions', 'permission_role.permission_id', '=', 'permissions.id')
+                        ->where('users.id', auth()->user()->id)
+                        ->where('permissions.key', 'browse_admin')->exists(); ?>
+                    @if ($browse)
+                            <div style="display: inline-block;">
+                                <form method="POST" action="/listings/publish">
+                                    @csrf
+                                    <input type="hidden" id="listing_id" name="listing_id" value="{{ $listing->id }}">
+                                    <button class="btn btn-outline-success" type="submit" onclick="return confirm('Are you sure you want to publish this item?');">Publish</button>
+                                </form>
+                            </div>
+                            <div style="display: inline-block;">
+                                <form method="POST" action="/listings/unpublish">
+                                    @csrf
+                                    <input type="hidden" id="listing_id" name="listing_id" value="{{ $listing->id }}">
+                                    <button class="btn btn-outline-warning" type="submit" onclick="return confirm('Are you sure you want to unpublish this item?');">Unpublish</button>
+                                </form>
+                            </div>
+                    @endif
                         </div>
                 </div>
             </div>
