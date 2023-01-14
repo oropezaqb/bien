@@ -30,10 +30,10 @@
                                         @method('DELETE')
                                         <button class="btn btn-link" type="submit" onclick="return confirm('Are you sure you want to delete this listing?');">Delete</button>
                                     </form></div>
-                                    <div style="display:inline-block;">&nbsp;&nbsp;Property {{ $listing->property_type }}
+                                    <div style="display:inline-block;">&nbsp;&nbsp;{{ $listing->property_type }}
                                         , {{ $listing->property_description }}
                                         , {{ $listing->floor_area }}
-                                        , {{ $listing->contract }}
+                                        , For {{ $listing->contract }}
                                         , {{ $listing->price }}
                                         , {{ $listing->address_barangay }}
                                         , {{ $listing->address_city }}

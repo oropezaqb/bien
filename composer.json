@@ -7,11 +7,13 @@
     "require": {
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
+        "intervention/image": "^2.7",
         "laravel/breeze": "^1.17",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravelcollective/html": "^6.3",
+        "spatie/temporary-directory": "^2.1",
         "tcg/voyager": "^1.6"
     },
     "require-dev": {

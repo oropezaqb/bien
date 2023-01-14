@@ -6,7 +6,6 @@ use App\Models\Listing;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreListing;
 use Illuminate\Support\Facades\Validator;
-use Intervention\Image\Facades\Image;
 
 class ListingController extends Controller
 {
@@ -62,41 +61,34 @@ class ListingController extends Controller
      */
     public function store(StoreListing $request)
     {
+        if($request->hasfile('photos'))
+        {
+            foreach($request->file('photos') as $image)
+            {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/assets/images/listings', $name);  // your folder path
+                $data[] = $name;
+            }
+        }
         try {
             \DB::transaction(function () use ($request) {
-                if($request->hasfile('photos'))
-                {
-                    foreach($request->file('photos') as $image)
-                    {
-                        $name=$image->getClientOriginalName();
-                        $image->store('images');
-                        $data[] = $name;
-                    }
-                }
                 $listing = new Listing([
-                    'contract' => request('contract'),
-                    'property_type' => request('property_type'),
-                    'property_description' => request('property_description'),
-                    'floor_area' => request('floor_area'),
-                    'lot_area' => request('lot_area'),
-                    'price' => request('price'),
-                    'address_region' => request('address_region'),
-                    'address_province' => request('address_province'),
-                    'address_city' => request('address_city'),
-                    'address_barangay' => request('address_barangay'),
-                    'address_street' => request('address_street'),
-                    'address_number' => request('address_number'),
-                    'address_floor' => request('address_floor'),
-                    'address_unit' => request('address_unit'),
-                    'available_at' => request('available_at'),
-                    'owner_name' => request('owner_name'),
-                    'phone_number' => request('phone_number'),
-                    'phone_number2' => request('phone_number'),
-                    'email' => request('email'),
-                    'address' => request('address'),
+                    'received_at' => request('received_at'),
+                    'payee_id' => request('payee_id'),
+                    'amount' => request('amount'),
+                    'bill_number' => request('bill_number'),
+                    'billed_at' => request('billed_at'),
+                    'po_number' => request('po_number'),
+                    'period_start' => request('period_start'),
+                    'period_end' => request('period_end'),
+                    'petty' => request('petty'),
+                    'classification' => request('classification'),
+                    'due_at' => request('due_at'),
+                    'endorsed_at' => request('endorsed_at'),
+                    'particulars' => request('particulars'),
+                    'remarks' => request('remarks'),
                     'photos' => json_encode($data),
                     'user_id' => request('user_id'),
-                    'publish' => '0',
                 ]);
                 $listing->save();
             });
@@ -150,14 +142,4 @@ class ListingController extends Controller
     {
         //
     }
-
-    public function translateError($e)
-    {
-        switch ($e->getCode()) {
-            //case '23000':
-                //return "Bill number for this supplier is already recorded.";
-        }
-        return $e->getMessage();
-    }
-
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class StoreListing extends FormRequest
 {
@@ -34,8 +36,9 @@ class StoreListing extends FormRequest
             'available_at' => ['required', 'date'],
             'owner_name' => ['required'],
             'phone_number' => ['required'],
-
-            'user_id' => ['required', 'exists:App\User,id'],
+            'photos' => ['required'],
+            'photos.*' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:3048'],
+            'user_id' => ['required', 'exists:App\Models\User,id']
         ];
     }
 }

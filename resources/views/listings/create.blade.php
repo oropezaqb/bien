@@ -16,7 +16,7 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="/listings">
+                        <form enctype="multipart/form-data" method="POST" action="/listings">
                             @csrf
                             @if ($errors->any())
                                 <div class="alert alert-danger">
