@@ -141,9 +141,56 @@ class ListingController extends Controller
      * @param  \App\Models\Listing  $listing
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Listing $listing)
+    public function update(StoreListing $request, Listing $listing)
     {
-dd($request);
+        try {
+            \DB::transaction(function () use ($request, $listing) {
+                if($request->hasfile('photos'))
+                {
+                    foreach($request->file('photos') as $image)
+                    {
+                        //$name=$image->getClientOriginalName();
+                        $image->store('images');
+                        $data[] = $image->hashName();
+                    }
+                }
+                $pictures = json_decode($listing->photos);
+                $listing->update([
+                    'contract' => request('contract'),
+                    'property_type' => request('property_type'),
+                    'property_description' => request('property_description'),
+                    'floor_area' => request('floor_area'),
+                    'lot_area' => request('lot_area'),
+                    'price' => request('price'),
+                    'address_region' => request('address_region'),
+                    'address_province' => request('address_province'),
+                    'address_city' => request('address_city'),
+                    'address_barangay' => request('address_barangay'),
+                    'address_street' => request('address_street'),
+                    'address_number' => request('address_number'),
+                    'address_floor' => request('address_floor'),
+                    'address_unit' => request('address_unit'),
+                    'available_at' => request('available_at'),
+                    'owner_name' => request('owner_name'),
+                    'phone_number' => request('phone_number'),
+                    'phone_number2' => request('phone_number2'),
+                    'email' => request('email'),
+                    'address' => request('address'),
+                    'photos' => json_encode($data),
+                    'user_id' => request('user_id'),
+                    'publish' => '0',
+                ]);
+                $arrlength = count($pictures);
+                for($x = 0; $x < $arrlength; $x++) {
+                    if(\File::exists(public_path('images/'. $pictures[$x]))){
+                        \File::delete(public_path('images/'. $pictures[$x]));
+                    }
+                }
+            });
+            return redirect(route('listings.show', [$listing]))->with('status', 'Listing updated!');
+        } catch (\Exception $e) {
+            return back()->with('status', $this->translateError($e))->withInput();
+        }
     }
 
     /**
@@ -161,7 +208,6 @@ dd($request);
                 });
                 $arrlength = count($pictures);
                 for($x = 0; $x < $arrlength; $x++) {
-//                    Storage::delete(asset('/images/'. $pictures[$x]));
                     if(\File::exists(public_path('images/'. $pictures[$x]))){
                         \File::delete(public_path('images/'. $pictures[$x]));
                     }

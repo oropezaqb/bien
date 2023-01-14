@@ -30,7 +30,7 @@
                             @endif
                             <div class="form-group custom-control-inline">
                                 <label for="contract">For sale/rent:</label>&nbsp;
-                                {{ Form::select('classification', array('Sale' => 'Sale', 'Rent' => 'Rent'), 'Sale',
+                                {{ Form::select('classification', array('Sale' => 'Sale', 'Rent' => 'Rent'), $listing->contract,
                                     $attributes = array('class' => 'form-control', 'style' => 'width: 100px;',
                                     'value' => old('contract', $listing->contract), 'id' => 'contract', 'name' => 'contract')); }}
                             </div>
