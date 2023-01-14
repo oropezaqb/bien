@@ -13,4 +13,8 @@ class Listing extends Model
     {
         return route('listings.show', $this);
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

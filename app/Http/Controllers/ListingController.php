@@ -68,9 +68,9 @@ class ListingController extends Controller
                 {
                     foreach($request->file('photos') as $image)
                     {
-                        $name=$image->getClientOriginalName();
+                        //$name=$image->getClientOriginalName();
                         $image->store('images');
-                        $data[] = $name;
+                        $data[] = $image->hashName();
                     }
                 }
                 $listing = new Listing([
@@ -91,7 +91,7 @@ class ListingController extends Controller
                     'available_at' => request('available_at'),
                     'owner_name' => request('owner_name'),
                     'phone_number' => request('phone_number'),
-                    'phone_number2' => request('phone_number'),
+                    'phone_number2' => request('phone_number2'),
                     'email' => request('email'),
                     'address' => request('address'),
                     'photos' => json_encode($data),
@@ -114,7 +114,10 @@ class ListingController extends Controller
      */
     public function show(Listing $listing)
     {
-        //
+        $header = "Listing Details";
+//dd(json_decode($listing->photos));
+        return view('listings.show',
+            compact('listing', 'header'));
     }
 
     /**
@@ -148,7 +151,14 @@ class ListingController extends Controller
      */
     public function destroy(Listing $listing)
     {
-        //
+            try {
+                \DB::transaction(function () use ($listing) {
+                    $listing->delete();
+                });
+                return redirect(route('listings.index'));
+            } catch (\Exception $e) {
+                return back()->with('status', $this->translateError($e))->withInput();
+            }
     }
 
     public function translateError($e)
