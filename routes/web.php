@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/published-listings', [PublishedListingController::class, 'index'])->name('published-listings.index');
+
 Route::post('/listings/publish', [ListingController::class, 'publish'])->name('listings.publish');
 Route::post('/listings/unpublish', [ListingController::class, 'unpublish'])->name('listings.unpublish');
 Route::resource('listings', ListingController::class);

@@ -22,6 +22,7 @@
                 <ul>
                     <li><a href="#"><i class="bi bi-house-door fs-5 me-2"></i> Home</a></li>
                     <li><a href="#about"><i class="bi fs-5 bi-info-square me-2"></i> About</a></li>
+                    <li><a href="/published-listings"><i class="bi fs-5 bi-columns-gap me-2"></i> Listings</a></li>
                     <li><a href="#contact"><i class="bifs-5  bi-envelope me-2"></i> Contact</a></li>
                 </ul>
             </div>
@@ -188,6 +189,37 @@
             
             
         </div>
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-12 col-md-12 footer-info text-center">
+            <h3>Follow us on</h3>
+            <div class="social-links mt-12">
+              <a href="https://twitter.com/bienoropeza" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="https://facebook.com/bien.oropeza" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://instagram.com/bienoropeza" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com/in/bienoropeza" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright text-center">
+        <br>
+        &copy; Copyright <strong><span>Bien Oropeza</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
     <body>
 </body>
 
