@@ -20,10 +20,10 @@
             </div>
             <div id="navbarNav" class="navcol d-none d-lg-block">
                 <ul>
-                    <li><a href="#"><i class="bi bi-house-door fs-5 me-2"></i> Home</a></li>
-                    <li><a href="#about"><i class="bi fs-5 bi-info-square me-2"></i> About</a></li>
+                    <li><a href="/#"><i class="bi bi-house-door fs-5 me-2"></i> Home</a></li>
+                    <li><a href="/#about"><i class="bi fs-5 bi-info-square me-2"></i> About</a></li>
                     <li><a href="/published-listings"><i class="bi fs-5 bi-columns-gap me-2"></i> Listings</a></li>
-                    <li><a href="#contact"><i class="bifs-5  bi-envelope me-2"></i> Contact</a></li>
+                    <li><a href="/#contact"><i class="bifs-5  bi-envelope me-2"></i> Contact</a></li>
                 </ul>
             </div>
         </header>

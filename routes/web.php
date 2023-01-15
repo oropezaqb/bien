@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/published-listings', [PublishedListingController::class, 'index'])->name('published-listings.index');
+Route::get('/published-listings/{id}', [PublishedListingController::class, 'show'])->name('published-listings.show');
 
 Route::post('/listings/publish', [ListingController::class, 'publish'])->name('listings.publish');
 Route::post('/listings/unpublish', [ListingController::class, 'unpublish'])->name('listings.unpublish');

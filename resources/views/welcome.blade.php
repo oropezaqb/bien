@@ -18,7 +18,7 @@
                         <ul>
                             <li></li>
                         </ul>
-                        <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="window.location.href='#contact';">Enlist Property</button>
+                        <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="window.location.href='/listings/create';">Enlist Property</button>
                     </div>
                </div>
             </div>
