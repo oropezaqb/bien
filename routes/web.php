@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/free-book', function () {
+    return view('free-book');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -37,6 +41,7 @@ Route::get('/published-listings/{id}', [PublishedListingController::class, 'show
 
 Route::post('/listings/publish', [ListingController::class, 'publish'])->name('listings.publish');
 Route::post('/listings/unpublish', [ListingController::class, 'unpublish'])->name('listings.unpublish');
+Route::post('/free-book/get', [FreeBookController::class, 'store'])->name('free-book.store');
 Route::resource('listings', ListingController::class);
 
 Route::group(['prefix' => 'admin'], function () {

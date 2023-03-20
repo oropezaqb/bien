@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Listing;
 
 class PublishedListingController extends Controller
 {
@@ -23,5 +24,11 @@ class PublishedListingController extends Controller
             \Request::flash();
         }
         return view('published-listings.index', compact('listings'));
+    }
+    public function show(Listing $listing)
+    {
+        $listing = \DB::table('listings')->where('id', $listing->id);
+        return view('published-listings.show',
+            compact('listing'));
     }
 }

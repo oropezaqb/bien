@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Bien Oropeza | Real Estate Consultant | Condominium | House and Lot | For Sale | For Rent')
+@section('title', 'Bien Oropeza | Oropeza Business Process Outsourcing Services | Accounting | Tax | Payroll')
 
 @section('content')
 
@@ -13,12 +13,12 @@
                             <img src="assets/images/square.jpg" class="rounded-pill bg-white p-2 shadow" alt="">
                         </div>
                         <b class="fs-6">Hello! I am Bien Oropeza</b>
-                        <h1 class="fw-bold mb-4 fs-1">Real Estate Consultant</h1>
-                        <p>Enlist your property for sale/rent with us!</p>
+                        <h1 class="fw-bold mb-4 fs-1">Certified Public Accountant</h1>
+                        <p>We provide Accounting, Tax, Payroll and Business Consultancy Services</p>
                         <ul>
                             <li></li>
                         </ul>
-                        <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="window.location.href='/listings/create';">Enlist Property</button>
+                        <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="window.location.href='/free-book';">Get Free Book</button>
                     </div>
                </div>
             </div>
@@ -33,40 +33,40 @@
                 <div class="row">
                     <div class="col-md-7">
                         <p><b>I am Bienvenido "Bien" Oropeza III</b></p>
-                        <p class="pt-2 fs-6 text-justify">I am a Real Estate Consultant based in Makati, Philippines. I have been providing real estate services since year 2019 with HLURB Registration No. BRFO-A-07/19-474.</p>
+                        <p class="pt-2 fs-6 text-justify">I am a Certified Public Accountant based in Makati, Philippines. I have been providing accounting and tax services since year 2014 with PRC Registration No. 0148752.</p>
                         
-                        <h4 class=" fs-5 my-3 mt-4 fw-bolder">Real Estate Services</h4>
+                        <h4 class=" fs-5 my-3 mt-4 fw-bolder">Services</h4>
                         <p>We provide the following services:</p>
 
                         <div class="row skill-set">
                             <div class="col-md-6 py-3">
-                               <h6 class="fw-bold">Property Consultation</h6>
+                               <h6 class="fw-bold">Accounting Services</h6>
                             </div>
                              <div class="col-md-6 py-3">
-                                <h6 class="fw-bold">Property Pricing</h6>
+                                <h6 class="fw-bold">Tax Filing Services</h6>
                             </div>
                             <div class="col-md-6 py-3">
-                                <h6 class="fw-bold">Property Selling</h6>
-                            </div>
-
-                            <div class="col-md-6 py-3">
-                                <h6 class="fw-bold">Lease-Related Services</h6>
+                                <h6 class="fw-bold">Payroll Services</h6>
                             </div>
 
                             <div class="col-md-6 py-3">
-                                <h6 class="fw-bold">Property Viewing</h6>
+                                <h6 class="fw-bold">Business Consultancy</h6>
                             </div>
 
                             <div class="col-md-6 py-3">
-                                <h6 class="fw-bold">Development Open Houses</h6>
+                                <h6 class="fw-bold">Bookkeeping</h6>
                             </div>
 
                             <div class="col-md-6 py-3">
-                                <h6 class="fw-bold">Property Management</h6>
+                                <h6 class="fw-bold">Tax Consultancy Services</h6>
                             </div>
 
                             <div class="col-md-6 py-3">
-                                <h6 class="fw-bold">Renting-Out Properties</h6>
+                                <h6 class="fw-bold">Contracts Review</h6>
+                            </div>
+
+                            <div class="col-md-6 py-3">
+                                <h6 class="fw-bold">Other Business Services</h6>
                             </div>
                         </div>
                     </div>
