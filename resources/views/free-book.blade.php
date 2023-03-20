@@ -22,16 +22,31 @@
                         <p>- Feel Stress-Free regarding tax compliance.</p><br>
                         <p>Get this book for free by providing your email address below:</p>
                         <div class="shadow-md p-4 rounded bg-white">
-                            <form action="">
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            <form enctype="multipart/form-data" method="POST" action="/free-book/get">
+                                @csrf
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                       </ul>
+                                    </div>
+                                @endif
                                 <div class="mb-3">
                                   <label for="exampleFormControlInput1" class="form-label fw-bolder fs-8">Name</label>
-                                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Name">
+                                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
                                 </div>
                                  <div class="mb-3">
                                   <label for="exampleFormControlInput1" class="form-label fw-bolder fs-8">Email Address</label>
-                                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Email Address">
+                                  <input type="email" class="form-control" id="email_address" name="email_address" placeholder="Enter Email Address">
                                 </div>
-                                <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill" onclick="window.location.href='/free-book/get';">Get Free Book</button>
+                                <button class="btn btn-outline-primary fw-bolder fs-7 px-4 py-2 mt-3 rounded-pill">Get Free Book</button>
                             </form>
                         </div>
                     </div>

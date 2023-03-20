@@ -4,16 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>@yield('title')</title>
-        <link rel="shortcut icon" href="{{ asset('assets/images/fav.png') }}" type="image/x-icon">
+        <link rel="shortcut icon" href="assets/images/fav.png" type="image/x-icon">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-        <link rel="shortcut icon" href="{{ asset('assets/images/fav.jpg') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+        <link rel="shortcut icon" href="assets/images/fav.jpg">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}" />
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
     </head>
         <header class="head">
             <div class="logo border-bottom">
-                <img class="w-100" src="{{ asset('assets/images/logo.jpg') }}" alt="" />
+                <img class="w-100" src="assets/images/logo.jpg" alt="" />
                  <a class="navbar-toggler d-block d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="bi bi-list"></i>
                 </a>
@@ -32,7 +32,7 @@
         </header>
         <div  class="main-content">
 
-            @yield('content')
+            {{ $slot }}
 
         </div>
   <!-- ======= Footer ======= -->
@@ -69,11 +69,11 @@
     <body>
 </body>
 
-<script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
-<script src="{{ asset('assets/js/popper.min.js') }}"></script>
-<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/scroll-fixed/jquery-scrolltofixed-min.js') }}"></script>
-<script src="{{ asset('assets/plugins/testimonial/js/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('assets/js/script.js') }}"></script>
+<script src="assets/js/jquery-3.2.1.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/plugins/scroll-fixed/jquery-scrolltofixed-min.js"></script>
+<script src="assets/plugins/testimonial/js/owl.carousel.min.js"></script>
+<script src="assets/js/script.js"></script>
 
 </html>

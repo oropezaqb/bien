@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\PublishedListingController;
+use App\Http\Controllers\FreeBookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,7 @@ Route::get('/published-listings/{id}', [PublishedListingController::class, 'show
 Route::post('/listings/publish', [ListingController::class, 'publish'])->name('listings.publish');
 Route::post('/listings/unpublish', [ListingController::class, 'unpublish'])->name('listings.unpublish');
 Route::post('/free-book/get', [FreeBookController::class, 'store'])->name('free-book.store');
+Route::post('/free-book/download', [FreeBookController::class, 'download'])->name('free-book.download');
 Route::resource('listings', ListingController::class);
 
 Route::group(['prefix' => 'admin'], function () {
