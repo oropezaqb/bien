@@ -77,7 +77,7 @@
             </div>
 
             <!--########################## Contact Us Starts Here ############################# -->
-            
+
             <div class="service px-4 py-5">
                  <div class="titie-row row mb-3">
                     <h2 class="fw-bolder">Contact Us</h2>
@@ -155,9 +155,10 @@
                     -->
                     <div class="col-md-12">
                         <div class="shadow-md p-4 rounded bg-white">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.706524966507!2d121.03977591463115!3d14.558767789829126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c9057c705c6b%3A0x4520387e5c0036e4!2sCanopy%20Properties%20Inc.!5e0!3m2!1sen!2sph!4v1673369557561!5m2!1sen!2sph" style="width:100%" height="340" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15446.828549776608!2d121.0419234!3d14.5587328!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4a95008d60ec7493%3A0x1c22f47a5d80c01b!2sOropeza%20BPO%20Services!5e0!3m2!1sen!2sph!4v1680080503738!5m2!1sen!2sph" style="width:100%" height="340" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade></iframe>
                         </div>
                     </div>
                 </div>
             </div>
+
 @endsection

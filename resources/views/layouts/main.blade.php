@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}" />
     </head>
+
         <header class="head">
             <div class="logo border-bottom">
                 <img class="w-100" src="{{ asset('assets/images/logo.jpg') }}" alt="" />
@@ -66,7 +67,7 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    <body>
+<body>
 </body>
 
 <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
